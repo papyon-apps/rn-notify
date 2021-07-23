@@ -11,7 +11,7 @@ npm install rn-notify
 ## Usage
 
 ```js
-import RnNotify from "rn-notify";
+import RnNotify from 'rn-notify';
 
 // ...
 
