@@ -1,5 +1,2 @@
-export default {
-  multiply(a: number, b: number) {
-    return Promise.resolve(a * b);
-  },
-};
+export { NotifyProvider, NotifyContext } from './NotifyProvider';
+export { default as useNotify } from './useNotify';

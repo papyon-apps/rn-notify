@@ -1,19 +1,25 @@
 import * as React from 'react';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
-import { StyleSheet, View, Text } from 'react-native';
-import RnNotify from 'rn-notify';
+import { NotifyProvider, useNotify } from 'rn-notify';
 
-export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    RnNotify.multiply(3, 7).then(setResult);
-  }, []);
-
+function Page() {
+  const notify = useNotify();
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <TouchableOpacity onPress={() => notify.success('hey', 3000)}>
+        <Text>Show alert</Text>
+      </TouchableOpacity>
+      <Text>Result: </Text>
     </View>
+  );
+}
+
+export default function App() {
+  return (
+    <NotifyProvider>
+      <Page />
+    </NotifyProvider>
   );
 }
 
