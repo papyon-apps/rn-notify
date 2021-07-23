@@ -7,10 +7,17 @@ function Page() {
   const notify = useNotify();
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => notify.success('hey', 3000)}>
-        <Text>Show alert</Text>
+      <TouchableOpacity onPress={() => notify.success('Nice Work 🎉', 1000)}>
+        <Text>Show success</Text>
       </TouchableOpacity>
-      <Text>Result: </Text>
+      <TouchableOpacity onPress={() => notify.info('Loading... 🧑‍💻', 1000)}>
+        <Text>Show info</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => notify.error('Something went wrong 👎', 1000)}
+      >
+        <Text>Show danger</Text>
+      </TouchableOpacity>
     </View>
   );
 }
