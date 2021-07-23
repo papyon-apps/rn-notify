@@ -36,13 +36,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/bufgix/rn-notify",
+  "repository": "https://github.com/Papyon-Apps/rn-notify",
   "author": "bufgix <ooruc471@yandex.com> (https://github.com/bufgix)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bufgix/rn-notify/issues"
+    "url": "https://github.com/Papyon-Apps/rn-notify/issues"
   },
-  "homepage": "https://github.com/bufgix/rn-notify#readme",
+  "homepage": "https://github.com/Papyon-Apps/rn-notify#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
