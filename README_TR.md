@@ -1,6 +1,10 @@
+
 # rn-notify
 
 A notify utility that show notification in app UI for lazy react native developers
+
+![Jul-23-2021 19-14-42](https://user-images.githubusercontent.com/22038798/126811336-a5426fc3-0873-403f-a575-ec02af0b89fc.gif)
+
 
 ## Installation
 
