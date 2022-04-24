@@ -8,7 +8,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import type { NotifyItemType } from '../types';
+import type { NotifyItemType } from '../index';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Colors } from '../styles';
 import useLayout from '../hooks/useLayout';

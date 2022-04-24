@@ -9,7 +9,7 @@ import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import NotifyItem from './components/NotifyItem';
-import type { NotifyContextType, NotifyItemType, NotifyOptions } from './types';
+import type { NotifyContextType, NotifyItemType, NotifyOptions } from './index';
 import generateUUID from './generateRandomId';
 
 export const NotifyContext = createContext<NotifyContextType | null>(null);
