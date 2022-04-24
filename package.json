@@ -1,6 +1,6 @@
 {
   "name": "rn-notify",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A notify utility that show notification in app UI",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
