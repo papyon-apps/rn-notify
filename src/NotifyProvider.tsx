@@ -57,6 +57,7 @@ export const NotifyProviderBase = ({ children }: PropsWithChildren<{}>) => {
 
   return (
     <NotifyContext.Provider value={contextValue}>
+      {children}
       <SafeAreaView pointerEvents={'box-none'} style={[styles.container]}>
         {items.map((item) => (
           <NotifyItem
@@ -68,7 +69,6 @@ export const NotifyProviderBase = ({ children }: PropsWithChildren<{}>) => {
           />
         ))}
       </SafeAreaView>
-      {children}
     </NotifyContext.Provider>
   );
 };
