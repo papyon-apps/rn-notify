@@ -1,10 +1,6 @@
 # rn-notify
 
-
-
 https://user-images.githubusercontent.com/22038798/164993645-bd2b6942-92c2-45c6-b8f1-4286b66bdcd8.mov
-
-
 
 A utility that displays notifications to user ✏️
 
@@ -36,7 +32,14 @@ function Page() {
   const notify = useNotify();
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => notify.success('Hello World', 3000)}>
+      <TouchableOpacity
+        onPress={() =>
+          notify.success({
+            message: 'Good Job 👍',
+            duration: 1000,
+          })
+        }
+      >
         <Text>Show alert</Text>
       </TouchableOpacity>
     </View>
@@ -52,17 +55,53 @@ export default function App() {
 }
 ```
 
-## Methods 🎚️
+For more examples check out the [example](https://github.com/Papyon-Apps/rn-notify/blob/feat/reanimated/example/src/App.tsx) folder 📂
 
----
+## Usage 🎚️
 
-#### `notify.<type>(msg: string, duration: number)`
+#### `notify.<type>(options: NotifyOptions)`
 
 Used to show a message. can take 3 types:
 
 - `notify.success` - Shows the message in a green box
 - `notify.info` - Shows the message in a yellow box
 - `notify.error` - Shows the message in a red box
+
+`NotifyOptions` is an object with the following properties:
+
+```ts
+export type NotifyOptions = {
+  /**
+   * The text of the notification.
+   */
+  message: string;
+  /**
+   * The level of the notification. Can be 'info', 'success' or 'error'.
+   */
+  level: NotifyLevel;
+  /**
+   * The duration of the notification. Defaults to `3000`.
+   */
+  duration?: number;
+  /**
+   * Show the timeout bar
+   */
+  noTimeoutBar?: boolean;
+  /**
+   * the function to call when the notification is clicked
+   * @param remove - the function to remove the notification that was clicked
+   */
+  onPress?: (remove: () => void) => void;
+  /**
+   * The style of the notification.
+   */
+  options?: {
+    containerStyle?: ViewStyle;
+    textStyle?: TextStyle;
+    timeoutBarStyle?: ViewStyle;
+  };
+};
+```
 
 ## Contributing 🔖
 
