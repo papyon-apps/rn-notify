@@ -11,7 +11,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import NotifyItem from './components/NotifyItem';
 import type { NotifyContextType, NotifyItemType, NotifyOptions } from './types';
 import generateUUID from './generateRandomId';
-import { Spacing } from './styles';
 
 export const NotifyContext = createContext<NotifyContextType | null>(null);
 
@@ -85,6 +84,6 @@ const styles = StyleSheet.create({
     width: '100%',
     zIndex: 10,
     alignSelf: 'center',
-    padding: Spacing.normal,
+    padding: 30,
   },
 });

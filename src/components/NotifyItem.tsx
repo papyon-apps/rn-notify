@@ -6,7 +6,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import type { NotifyItemType } from '../types';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { Colors, Spacing } from '../styles';
+import { Colors } from '../styles';
 
 type Props = {
   item: NotifyItemType;
@@ -69,12 +69,12 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: Spacing.small,
+    marginTop: 10,
     borderRadius: 10,
   },
   wrapper: {
     width: '100%',
-    padding: Spacing.normal,
+    padding: 15,
     flexDirection: 'row',
     alignItems: 'center',
   },
