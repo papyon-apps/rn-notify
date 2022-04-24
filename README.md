@@ -1,6 +1,10 @@
 # rn-notify
 
-![Jul-23-2021 19-14-42](https://user-images.githubusercontent.com/22038798/126811336-a5426fc3-0873-403f-a575-ec02af0b89fc.gif)
+
+
+https://user-images.githubusercontent.com/22038798/164993645-bd2b6942-92c2-45c6-b8f1-4286b66bdcd8.mov
+
+
 
 A utility that displays notifications to user ✏️
 
