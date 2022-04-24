@@ -5,8 +5,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { StyleSheet, View } from 'react-native';
 
 import NotifyItem from './components/NotifyItem';
 import type { NotifyContextType, NotifyItemType, NotifyOptions } from './index';
@@ -65,7 +64,7 @@ export const NotifyProviderBase = ({ children }: PropsWithChildren<{}>) => {
   return (
     <NotifyContext.Provider value={contextValue}>
       {children}
-      <SafeAreaView pointerEvents={'box-none'} style={[styles.container]}>
+      <View pointerEvents={'box-none'} style={[styles.container]}>
         {items.map((item) => (
           <NotifyItem
             item={item}
@@ -75,7 +74,7 @@ export const NotifyProviderBase = ({ children }: PropsWithChildren<{}>) => {
             key={item.id}
           />
         ))}
-      </SafeAreaView>
+      </View>
     </NotifyContext.Provider>
   );
 };
