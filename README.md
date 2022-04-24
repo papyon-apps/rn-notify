@@ -10,16 +10,16 @@ A utility that displays notifications to user ✏️
 yarn add rn-notify
 ```
 
-`rn-notify` needs `react-native-safe-area-context` 💎
+`rn-notify` needs two native dependencies 💎
 
 ```sh
-yarn add react-native-safe-area-context
+yarn add react-native-reanimated react-native-safe-area-context
 ```
 
-👇 You also need to complete installations of `react-native-safe-area-context` for more information use the links below 👇
+👇 You also need to complete installations of these packages for more information use the links below 👇
 
+- [react-native-reanimated](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation)
 - [react-native-safe-area-context](https://github.com/th3rdwave/react-native-safe-area-context#getting-started)
-
 ## Usage 🧑‍💻
 
 ```tsx
