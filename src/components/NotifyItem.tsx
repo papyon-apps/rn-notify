@@ -7,7 +7,6 @@ import Animated, {
 import type { NotifyItemType } from '../types';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Colors, Spacing } from '../styles';
-import * as Icons from '../icons';
 
 type Props = {
   item: NotifyItemType;
@@ -28,24 +27,19 @@ export default function NotifyItem({ item, onRemoved }: Props) {
         return {
           backgroundColor: Colors.Green,
           color: Colors.White,
-          icon: Icons.Success,
         };
       case 'info':
         return {
           backgroundColor: Colors.Gold,
           color: Colors.White,
-          icon: Icons.Information,
         };
       case 'error':
         return {
           backgroundColor: Colors.Danger,
           color: Colors.White,
-          icon: Icons.Alert,
         };
     }
   }, [item]);
-
-  const Icon = useMemo(() => levelStyle.icon, [levelStyle]);
 
   return (
     <Animated.View
@@ -63,12 +57,6 @@ export default function NotifyItem({ item, onRemoved }: Props) {
           });
         }}
       >
-        <Icon
-          style={{ marginRight: Spacing.small }}
-          height={24}
-          width={24}
-          color={Colors.White}
-        />
         <Text style={[{ color: levelStyle.color }, item.options?.textStyle]}>
           {item.message}
         </Text>
