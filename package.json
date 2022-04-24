@@ -1,6 +1,6 @@
 {
   "name": "rn-notify",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "A notify utility that show notification in app UI",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -100,7 +100,6 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "yarn lint && yarn typescript"
     }
   },
