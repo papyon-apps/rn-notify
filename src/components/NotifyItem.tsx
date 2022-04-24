@@ -1,7 +1,11 @@
 import React, { useEffect, useMemo } from 'react';
-import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
+import Animated, {
+  CurvedTransition,
+  FadeIn,
+  FadeOut,
+} from 'react-native-reanimated';
 import type { NotifyItemType } from '../types';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Colors, Spacing } from '../styles';
 import * as Icons from '../icons';
 
@@ -12,9 +16,10 @@ type Props = {
 
 export default function NotifyItem({ item, onRemoved }: Props) {
   useEffect(() => {
-    setTimeout(() => {
-      onRemoved(item.id);
-    }, item.duration || 3000);
+    if (item.duration !== -1)
+      setTimeout(() => {
+        onRemoved(item.id);
+      }, item.duration || 3000);
   }, []);
 
   const levelStyle = useMemo(() => {
@@ -46,15 +51,28 @@ export default function NotifyItem({ item, onRemoved }: Props) {
     <Animated.View
       entering={FadeIn}
       exiting={FadeOut}
-      style={[styles.container, levelStyle]}
+      layout={CurvedTransition}
+      pointerEvents={item.onPress ? 'auto' : 'none'}
+      style={[styles.container, levelStyle, item.options?.containerStyle]}
     >
-      <Icon
-        style={{ marginRight: Spacing.small }}
-        height={24}
-        width={24}
-        color={Colors.White}
-      />
-      <Text>{item.message}</Text>
+      <TouchableOpacity
+        style={styles.wrapper}
+        onPress={() => {
+          item.onPress?.(() => {
+            onRemoved(item.id);
+          });
+        }}
+      >
+        <Icon
+          style={{ marginRight: Spacing.small }}
+          height={24}
+          width={24}
+          color={Colors.White}
+        />
+        <Text style={[{ color: levelStyle.color }, item.options?.textStyle]}>
+          {item.message}
+        </Text>
+      </TouchableOpacity>
     </Animated.View>
   );
 }
@@ -63,9 +81,13 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: '100%',
-    padding: Spacing.normal,
     marginTop: Spacing.small,
     borderRadius: 10,
+  },
+  wrapper: {
+    width: '100%',
+    padding: Spacing.normal,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });

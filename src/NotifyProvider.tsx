@@ -2,13 +2,14 @@ import React, {
   createContext,
   PropsWithChildren,
   useCallback,
+  useMemo,
   useState,
 } from 'react';
 import { StyleSheet } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import NotifyItem from './components/NotifyItem';
-import type { NotifyContextType, NotifyItemType, NotifyTypes } from './types';
+import type { NotifyContextType, NotifyItemType, NotifyOptions } from './types';
 import generateUUID from './generateRandomId';
 import { Spacing } from './styles';
 
@@ -17,20 +18,20 @@ export const NotifyContext = createContext<NotifyContextType | null>(null);
 export const NotifyProviderBase = ({ children }: PropsWithChildren<{}>) => {
   const [items, setItems] = useState<NotifyItemType[]>([]);
 
-  const success = useCallback((message: string, duration?: number) => {
-    fire(message, 'success', duration);
+  const success = useCallback((options: Omit<NotifyOptions, 'level'>) => {
+    fire({ ...options, level: 'success' });
   }, []);
 
-  const error = useCallback((message: string, duration?: number) => {
-    fire(message, 'error', duration);
+  const error = useCallback((options: Omit<NotifyOptions, 'level'>) => {
+    fire({ ...options, level: 'error' });
   }, []);
 
-  const info = useCallback((message: string, duration?: number) => {
-    fire(message, 'info', duration);
+  const info = useCallback((options: Omit<NotifyOptions, 'level'>) => {
+    fire({ ...options, level: 'info' });
   }, []);
 
   const fire = useCallback(
-    (message: string, level: NotifyTypes = 'success', duration?: number) => {
+    ({ message, duration, level, options, onPress }: NotifyOptions) => {
       setItems((prev) => [
         ...prev,
         {
@@ -38,13 +39,24 @@ export const NotifyProviderBase = ({ children }: PropsWithChildren<{}>) => {
           level,
           message,
           duration,
+          options,
+          onPress,
         },
       ]);
     },
     []
   );
+
+  const contextValue = useMemo(() => {
+    return {
+      error,
+      success,
+      info,
+    };
+  }, [error, success, info]);
+
   return (
-    <NotifyContext.Provider value={{ error, success, info }}>
+    <NotifyContext.Provider value={contextValue}>
       <SafeAreaView pointerEvents={'box-none'} style={[styles.container]}>
         {items.map((item) => (
           <NotifyItem
@@ -62,11 +74,7 @@ export const NotifyProviderBase = ({ children }: PropsWithChildren<{}>) => {
 };
 
 export const NotifyProvider = ({ children }: PropsWithChildren<{}>) => {
-  return (
-    <SafeAreaProvider>
-      <NotifyProviderBase>{children}</NotifyProviderBase>
-    </SafeAreaProvider>
-  );
+  return <NotifyProviderBase>{children}</NotifyProviderBase>;
 };
 
 const styles = StyleSheet.create({
@@ -74,7 +82,7 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     flexDirection: 'column',
     alignItems: 'center',
-    width: '95%',
+    width: '100%',
     zIndex: 10,
     alignSelf: 'center',
     padding: Spacing.normal,
