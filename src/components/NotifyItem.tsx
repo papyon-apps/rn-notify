@@ -18,6 +18,8 @@ type Props = {
   onRemoved: (id: string) => void;
 };
 
+const DEFAULT_DURATION = 3000;
+
 export default function NotifyItem({ item, onRemoved }: Props) {
   const { width, onLayout } = useLayout();
 
@@ -29,7 +31,7 @@ export default function NotifyItem({ item, onRemoved }: Props) {
       if (item.duration !== -1) {
         barWidth.value = withTiming(
           0,
-          { duration: item.duration || 3000 },
+          { duration: item.duration || DEFAULT_DURATION },
           () => {
             runOnJS(onRemoved)(item.id);
           }
