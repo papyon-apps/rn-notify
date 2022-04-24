@@ -10,30 +10,29 @@ A utility that displays notifications to user ✏️
 yarn add rn-notify
 ```
 
-`rn-notify` needs two native dependencies 💎
+`rn-notify` needs `react-native-safe-area-context` 💎
 
 ```sh
-yarn add react-native-safe-area-context react-native-svg
+yarn add react-native-safe-area-context
 ```
 
-👇 You also need to complete installations of these packages for more information use the links below 👇
+👇 You also need to complete installations of `react-native-safe-area-context` for more information use the links below 👇
 
-- [react-native-svg](https://github.com/react-native-svg/react-native-svg#installation)
 - [react-native-safe-area-context](https://github.com/th3rdwave/react-native-safe-area-context#getting-started)
 
 ## Usage 🧑‍💻
 
 ```tsx
-import * as React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import * as React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 
-import { NotifyProvider, useNotify } from "rn-notify";
+import { NotifyProvider, useNotify } from 'rn-notify';
 
 function Page() {
   const notify = useNotify();
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => notify.success("Hello World", 3000)}>
+      <TouchableOpacity onPress={() => notify.success('Hello World', 3000)}>
         <Text>Show alert</Text>
       </TouchableOpacity>
     </View>

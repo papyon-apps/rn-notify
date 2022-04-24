@@ -2,19 +2,16 @@ import * as React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 import { NotifyProvider, useNotify } from 'rn-notify';
-import { useRef } from 'react';
 
 function Page() {
-  const renderCount = useRef(0);
   const notify = useNotify();
-  console.log('render', renderCount.current++);
 
   return (
     <View style={styles.container}>
       <TouchableOpacity
         onPress={() =>
           notify.success({
-            message: 'Good Job',
+            message: 'Good Job 👍',
             duration: 1000,
             noTimeoutBar: true,
             options: {
@@ -32,7 +29,7 @@ function Page() {
             duration: -1,
             onPress: (remove) => {
               notify.success({
-                message: 'Helal kardaşşıım',
+                message: 'Done ✅',
               });
               remove();
             },
