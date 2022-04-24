@@ -1,6 +1,6 @@
 # rn-notify
 
-![Jul-23-2021 19-14-42](https://user-images.githubusercontent.com/22038798/126811336-a5426fc3-0873-403f-a575-ec02af0b89fc.gif)
+https://user-images.githubusercontent.com/22038798/164993645-bd2b6942-92c2-45c6-b8f1-4286b66bdcd8.mov
 
 A utility that displays notifications to user ✏️
 
@@ -13,27 +13,33 @@ yarn add rn-notify
 `rn-notify` needs two native dependencies 💎
 
 ```sh
-yarn add react-native-safe-area-context react-native-svg
+yarn add react-native-reanimated react-native-safe-area-context
 ```
 
 👇 You also need to complete installations of these packages for more information use the links below 👇
 
-- [react-native-svg](https://github.com/react-native-svg/react-native-svg#installation)
+- [react-native-reanimated](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation)
 - [react-native-safe-area-context](https://github.com/th3rdwave/react-native-safe-area-context#getting-started)
-
 ## Usage 🧑‍💻
 
 ```tsx
-import * as React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import * as React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 
-import { NotifyProvider, useNotify } from "rn-notify";
+import { NotifyProvider, useNotify } from 'rn-notify';
 
 function Page() {
   const notify = useNotify();
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => notify.success("Hello World", 3000)}>
+      <TouchableOpacity
+        onPress={() =>
+          notify.success({
+            message: 'Good Job 👍',
+            duration: 1000,
+          })
+        }
+      >
         <Text>Show alert</Text>
       </TouchableOpacity>
     </View>
@@ -49,17 +55,53 @@ export default function App() {
 }
 ```
 
-## Methods 🎚️
+For more examples check out the [example](https://github.com/Papyon-Apps/rn-notify/blob/feat/reanimated/example/src/App.tsx) folder 📂
 
----
+## Usage 🎚️
 
-#### `notify.<type>(msg: string, duration: number)`
+#### `notify.<type>(options: NotifyOptions)`
 
 Used to show a message. can take 3 types:
 
 - `notify.success` - Shows the message in a green box
 - `notify.info` - Shows the message in a yellow box
 - `notify.error` - Shows the message in a red box
+
+`NotifyOptions` is an object with the following properties:
+
+```ts
+export type NotifyOptions = {
+  /**
+   * The text of the notification.
+   */
+  message: string;
+  /**
+   * The level of the notification. Can be 'info', 'success' or 'error'.
+   */
+  level: NotifyLevel;
+  /**
+   * The duration of the notification. Defaults to `3000`.
+   */
+  duration?: number;
+  /**
+   * Show the timeout bar
+   */
+  noTimeoutBar?: boolean;
+  /**
+   * the function to call when the notification is clicked
+   * @param remove - the function to remove the notification that was clicked
+   */
+  onPress?: (remove: () => void) => void;
+  /**
+   * The style of the notification.
+   */
+  options?: {
+    containerStyle?: ViewStyle;
+    textStyle?: TextStyle;
+    timeoutBarStyle?: ViewStyle;
+  };
+};
+```
 
 ## Contributing 🔖
 

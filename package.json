@@ -34,7 +34,23 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "react-native notifications",
+    "react native notification",
+    "react native inapp notification",
+    "react native display notification",
+    "react native heads up notification",
+    "react native reanimated notification",
+    "react native smooth notification",
+    "react native easy notification",
+    "react native display notification",
+    "react native notify",
+    "react native animated notification",
+    "react native clickable notification",
+    "react native notify user",
+    "react native heads up notify",
+    "react native notify user",
+    "react native display notification"
   ],
   "repository": "https://github.com/Papyon-Apps/rn-notify",
   "author": "bufgix <ooruc471@yandex.com> (https://github.com/bufgix)",
@@ -71,6 +87,7 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
+    "react-native-reanimated": "~2.3.1",
     "react-native-safe-area-context": "^3.2.0",
     "react-native-svg": "^12.1.1"
   },
@@ -154,6 +171,7 @@
     ]
   },
   "dependencies": {
+    "react-native-reanimated": "~2.3.1",
     "react-native-safe-area-context": "^3.2.0",
     "react-native-svg": "^12.1.1"
   }
