@@ -5,6 +5,7 @@ import { NotifyProvider, useNotify } from 'rn-notify';
 
 function Page() {
   const notify = useNotify();
+
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => notify.success('Nice Work 🎉', 1000)}>
@@ -14,7 +15,7 @@ function Page() {
         <Text>Show info</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => notify.error('Something went wrong 👎', 1000)}
+        onPress={() => notify.error('Something went wrong 👎', 3000)}
       >
         <Text>Show danger</Text>
       </TouchableOpacity>
