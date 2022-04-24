@@ -16,6 +16,7 @@ function Page() {
           notify.success({
             message: 'Good Job',
             duration: 1000,
+            noTimeoutBar: true,
             options: {
               containerStyle: { width: '50%', alignSelf: 'flex-end' },
             },
@@ -45,7 +46,15 @@ function Page() {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() =>
-          notify.error({ message: 'Something went wrong 👎', duration: 3000 })
+          notify.error({
+            message: 'Something went wrong 👎',
+            duration: 3000,
+            options: {
+              timeoutBarStyle: {
+                height: 10,
+              },
+            },
+          })
         }
       >
         <Text>Show danger</Text>

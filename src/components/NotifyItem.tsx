@@ -91,15 +91,18 @@ export default function NotifyItem({ item, onRemoved }: Props) {
           {item.message}
         </Text>
       </TouchableOpacity>
-      <Animated.View
-        style={[
-          styles.bar,
-          {
-            backgroundColor: levelStyle.barColor,
-          },
-          barStyle,
-        ]}
-      />
+      {!item.noTimeoutBar && (
+        <Animated.View
+          style={[
+            styles.bar,
+            {
+              backgroundColor: levelStyle.barColor,
+            },
+            item.options?.timeoutBarStyle,
+            barStyle,
+          ]}
+        />
+      )}
     </Animated.View>
   );
 }

@@ -6,10 +6,12 @@ export type NotifyOptions = {
   message: string;
   level: NotifyLevel;
   duration?: number;
+  noTimeoutBar?: boolean;
   onPress?: (remove: () => void) => void;
   options?: {
     containerStyle?: ViewStyle;
     textStyle?: TextStyle;
+    timeoutBarStyle?: ViewStyle;
   };
 };
 

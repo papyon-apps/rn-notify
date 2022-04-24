@@ -30,7 +30,14 @@ export const NotifyProviderBase = ({ children }: PropsWithChildren<{}>) => {
   }, []);
 
   const fire = useCallback(
-    ({ message, duration, level, options, onPress }: NotifyOptions) => {
+    ({
+      message,
+      duration,
+      level,
+      options,
+      onPress,
+      noTimeoutBar = false,
+    }: NotifyOptions) => {
       setItems((prev) => [
         ...prev,
         {
@@ -40,6 +47,7 @@ export const NotifyProviderBase = ({ children }: PropsWithChildren<{}>) => {
           duration,
           options,
           onPress,
+          noTimeoutBar,
         },
       ]);
     },
