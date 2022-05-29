@@ -168,6 +168,6 @@
     ]
   },
   "dependencies": {
-    "react-native-reanimated": "~2.3.1"
+    "react-native-reanimated": "~2.8.0"
   }
 }
