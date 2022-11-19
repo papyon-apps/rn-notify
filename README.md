@@ -1,31 +1,112 @@
 # rn-notify
 
-A notify utility that show notification in app UI
+https://user-images.githubusercontent.com/22038798/164993645-bd2b6942-92c2-45c6-b8f1-4286b66bdcd8.mov
 
-## Installation
+A utility that displays notifications to user ✏️
+
+## Installation ⚙️
 
 ```sh
-npm install rn-notify
+yarn add rn-notify
 ```
 
-## Usage
+`rn-notify` needs `react-native-reanimated` package 💎
 
-```js
-import { multiply } from 'rn-notify';
-
-// ...
-
-const result = await multiply(3, 7);
+```sh
+yarn add react-native-reanimated
 ```
 
-## Contributing
+👇 You also need to complete installations of these packages for more information use the links below 👇
+
+- [react-native-reanimated](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation)
+
+## Usage 🧑‍💻
+
+```tsx
+import * as React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+
+import { NotifyProvider, useNotify } from 'rn-notify';
+
+function Page() {
+  const notify = useNotify();
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity
+        onPress={() =>
+          notify.success({
+            message: 'Good Job 👍',
+            duration: 1000,
+          })
+        }
+      >
+        <Text>Show alert</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+export default function App() {
+  return (
+    <NotifyProvider>
+      <Page />
+    </NotifyProvider>
+  );
+}
+```
+
+For more examples check out the [example](https://github.com/Papyon-Apps/rn-notify/blob/feat/reanimated/example/src/App.tsx) folder 📂
+
+## Usage 🎚️
+
+#### `notify.<type>(options: NotifyOptions)`
+
+Used to show a message. can take 3 types:
+
+- `notify.success` - Shows the message in a green box
+- `notify.info` - Shows the message in a yellow box
+- `notify.error` - Shows the message in a red box
+
+`NotifyOptions` is an object with the following properties:
+
+```ts
+export type NotifyOptions = {
+  /**
+   * The text of the notification.
+   */
+  message: string;
+  /**
+   * The level of the notification. Can be 'info', 'success' or 'error'.
+   */
+  level: NotifyLevel;
+  /**
+   * The duration of the notification. Defaults to `3000`.
+   */
+  duration?: number;
+  /**
+   * Show the timeout bar
+   */
+  noTimeoutBar?: boolean;
+  /**
+   * the function to call when the notification is clicked
+   * @param remove - the function to remove the notification that was clicked
+   */
+  onPress?: (remove: () => void) => void;
+  /**
+   * The style of the notification.
+   */
+  options?: {
+    containerStyle?: ViewStyle;
+    textStyle?: TextStyle;
+    timeoutBarStyle?: ViewStyle;
+  };
+};
+```
+
+## Contributing 🔖
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
-## License
+## License 📰
 
-MIT
-
----
-
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
+[MIT](https://github.com/Papyon-Apps/rn-notify/blob/master/LICENSE)
