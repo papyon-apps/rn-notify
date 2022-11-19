@@ -8,10 +8,11 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import type { NotifyItemType } from '../index';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { Colors } from '../styles';
-import useLayout from '../hooks/useLayout';
+
+import type { NotifyItemType } from './index';
+import { colors } from './colors';
+import useLayout from './hooks/useLayout';
 
 type Props = {
   item: NotifyItemType;
@@ -44,21 +45,21 @@ export default function NotifyItem({ item, onRemoved }: Props) {
     switch (item.level) {
       case 'success':
         return {
-          backgroundColor: Colors.Success,
-          color: Colors.White,
-          barColor: Colors.SuccessDark,
+          backgroundColor: colors.Success,
+          color: colors.White,
+          barColor: colors.SuccessDark,
         };
       case 'info':
         return {
-          backgroundColor: Colors.Gold,
-          color: Colors.White,
-          barColor: Colors.GoldDark,
+          backgroundColor: colors.Gold,
+          color: colors.White,
+          barColor: colors.GoldDark,
         };
       case 'error':
         return {
-          backgroundColor: Colors.Danger,
-          color: Colors.White,
-          barColor: Colors.DangerDark,
+          backgroundColor: colors.Danger,
+          color: colors.White,
+          barColor: colors.DangerDark,
         };
     }
   }, [item]);

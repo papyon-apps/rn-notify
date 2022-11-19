@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import NotifyItem from './components/NotifyItem';
+import NotifyItem from './NotifyItem';
 import type { NotifyContextType, NotifyItemType, NotifyOptions } from './index';
 import generateUUID from './generateRandomId';
 
