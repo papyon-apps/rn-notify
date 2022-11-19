@@ -1,6 +1,6 @@
 {
   "name": "rn-notify",
-  "version": "2.0.9",
+  "version": "2.0.10",
   "description": "test",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
