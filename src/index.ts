@@ -20,6 +20,10 @@ export type NotifyOptions = {
    */
   noTimeoutBar?: boolean;
   /**
+   * Limit the number of notification displayed at the same time.
+   */
+  limit?: number;
+  /**
    * the function to call when the notification is clicked
    * @param remove - the function to remove the notification that was clicked
    */
