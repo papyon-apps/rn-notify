@@ -36,10 +36,10 @@ export const NotifyProviderBase = ({ children }: PropsWithChildren<{}>) => {
       options,
       onPress,
       noTimeoutBar = false,
-      limit = 0,
+      limit = null,
     }: NotifyOptions) => {
       setItems((prev) => {
-        if (limit > 0) {
+        if (limit) {
           const count = prev.filter((i) => i.level === level).length;
           if (count >= limit) return prev;
         }

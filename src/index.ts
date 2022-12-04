@@ -22,7 +22,7 @@ export type NotifyOptions = {
   /**
    * Limit the number of notification displayed at the same time.
    */
-  limit?: number;
+  limit?: number | null;
   /**
    * the function to call when the notification is clicked
    * @param remove - the function to remove the notification that was clicked
