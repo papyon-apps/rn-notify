@@ -36,19 +36,27 @@ export const NotifyProviderBase = ({ children }: PropsWithChildren<{}>) => {
       options,
       onPress,
       noTimeoutBar = false,
+      limit = null,
     }: NotifyOptions) => {
-      setItems((prev) => [
-        ...prev,
-        {
-          id: generateUUID(10),
-          level,
-          message,
-          duration,
-          options,
-          onPress,
-          noTimeoutBar,
-        },
-      ]);
+      setItems((prev) => {
+        if (limit) {
+          const count = prev.filter((i) => i.level === level).length;
+          if (count >= limit) return prev;
+        }
+        return [
+          ...prev,
+          {
+            id: generateUUID(10),
+            message,
+            duration,
+            level,
+            options,
+            onPress,
+            noTimeoutBar,
+            limit,
+          },
+        ];
+      });
     },
     []
   );
