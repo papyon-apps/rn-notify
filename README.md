@@ -7,7 +7,11 @@ A utility that displays notifications to user ✏️
 ## Installation ⚙️
 
 ```sh
-yarn add rn-notify
+# for reanimated 2 users
+yarn add rn-notify@2.0.11
+
+# for reanimated 3 users
+yarn add rn-notify@latest
 ```
 
 `rn-notify` needs `react-native-reanimated` package 💎
